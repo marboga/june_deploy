@@ -1,0 +1,11 @@
+body {
+  background-color: #dfa;
+}
+.content {
+  background-color: #fdfdfd;
+  padding: 15px;
+}
+
+a.important {
+  font-size: 3rem;
+}

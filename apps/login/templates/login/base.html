@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Secrets</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css">
+    <link rel="stylesheet" href="{% static 'login/css/styles.css' %}">
+  </head>
+  <body>
+    <header class="page-header">
+      <h3>secrets
+        {% if request.session.id %}
+          <a href="{% url 'auth:logout' %}" class="right">log out</a>
+        {% endif %}
+      </h3>
+    </header>
+
+    <div class="content container">
+
+            {% block content %}
+            {% endblock %}
+
+    </div>
+
+  </body>
+</html>

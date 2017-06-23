@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="css/style.css" rel="stylesheet">
+    </head>
+    <body>
+        <h1>Welcome, {{ request.session.first_name }}</h1>
+        <h3>Recent Book Reviews:</h3>
+        <div class="reviews">
+            {% for review in recent_reviews %}
+                <h4>{{ review.book.title }}</h4>
+                <p>
+                    <span>
+                    {% with ''|center:review.rating as range %}
+                        {% for _ in range %}
+                            *
+                        {% endfor %}
+                    {% endwith %}
+                    </span>
+                </p>
+                <p>{{ review.content }} - {{ review.rater.first_name }}</p>
+            {% endfor %}
+        </div>
+        <h4>Other Books with Reviews:</h4>
+        <div class="others">
+            {% for old_review in other_reviews %}
+            <ul>
+                <li>{{ old_review.book.title }}</li>
+            </ul>
+            {% endfor %}
+        </div>
+        <a href="{% url 'review_app:add' %}">Add book and review</a>
+        <a href="{% url 'login:logout' %}">Log out</a>
+    </body>
+</html>

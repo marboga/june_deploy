@@ -1,0 +1,69 @@
+{% extends 'login/base.html' %}
+
+{% block content %}
+<div class="row">
+	<div class="columns five">
+		<h1>Register</h1>
+		<form class="register_form" action="{% url 'auth:register' %}" method="post">
+			{% csrf_token %}
+			<label for="first_name">First Name:</label>
+			<input type="text" name="first_name" value="">
+			<label for="last_name">Last Name:</label>
+			<input type="text" name="last_name" value="">
+			<label for="email">Email:</label>
+			<input type="text" name="email" value="">
+			<label for="password">Password:</label>
+			<input type="password" name="password" value="">
+			<label for="confirm_password">Confirm Password:</label>
+			<input type="password" name="confirm_password" value="">
+			<label for="submit"></label>
+			<input class="button-primary" type="submit" name="name" value="Register">
+		</form>
+	</div>
+	<div class="columns five">
+		<h1>Log In</h1>
+		<form class="login_form" action="{% url 'auth:login' %}" method="post">
+			{% csrf_token %}
+			<label for="email">Email:</label>
+			<input type="text" name="email" value="">
+			<label for="password">Password:</label>
+			<input type="password" name="password" value="">
+			<label for=""></label>
+			<input class="button-primary" type="submit" name="submit" value="Log In">
+		</form>
+	</div>
+</div>
+<div class="row">
+	<div class="columns six">
+		<p></p>
+		{% if messages %}
+		{% for message in messages %}
+		{% if message.tags == 'error' %}
+		<p class="{{ message.tags }}">{{ message }}</p>
+		{% endif %}
+		{% endfor %}
+		{% endif %}
+	</div>
+	<div class="columns six">
+		{% if messages %}
+		{% for message in messages %}
+		{% if message.tags == 'warning' %}
+		<p class="{{ message.tags }}">{{ message }}</p>
+		{% endif %}
+		{% endfor %}
+		{% endif %}
+	</div>
+</div>
+<div class="row">
+	<div class="columns twelve">
+
+		<!-- for user in users %}
+		<p>
+		{{ user.first_name }} {{ user.last_name }} {{ user.email }}
+		{{ user.password }}
+	</p>
+	endfor %} -->
+
+</div>
+</div>
+{% endblock %}
